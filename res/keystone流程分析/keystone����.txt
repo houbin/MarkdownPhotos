@@ -1,0 +1,23 @@
+1. assignment表
+actor_id: 		user表主键
+target_id: 		project表主键
+role_id: 		role表主键
+
+描述了用户、租户、角色的关系
+user -> project(租户) -> role
+
+2. keystone侦听端口
+public_port 5000
+amdin_port 35357
+
+3. 抓包
+a. keystone抓包(不知为啥网口名为这个鸟玩意了)，192.168.1.28
+tcpdump -i enp5s0f0 port 5000 -w /tmp/keystone.cap
+
+b. rgw抓包, 192.168.1.50
+tcpdump -i eth0 port 80 -w /tmp/rgw.cap
+
+c. python-swiftclient抓包, 192.168.222.129
+tcpdump -i ens33 port 80 or port 5000 or port 35357 -w /tmp/swiftclient.cap
+
+4. 在
